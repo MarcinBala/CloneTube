@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CloneTube</title>
+  <meta name="author" content="Marcin Bała">
+  <link rel="icon" href="/src/images/favicon.ico">
+  <link href="style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="main.css">
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/7514a3811e.js" crossorigin="anonymous"></script>
+  <script defer src="main.js"></script>
+</head>
+<body class="custom-scrollbar">
+  <nav class="nav-flex-sb">
+
+    <div id="nav-left-container">
+      <div class="menu-button-container hover-lightgrey" onclick="toggleSidemenu()">
+        <i class="fa-solid fa-bars fa-lg" aria-label="Menu"></i>
+      </div>
+      <div class="nav-logo-container">
+        <img class="nav-logo" src="images/CloneTube-logo.svg" alt="CloneTube">
+      </div>
+    </div>
+
+    <div id="nav-center-container" class="d-md-flex w-100" style="display: none;">
+      <div class="d-flex justify-content-center w-100" style="padding: 0 80px;">
+        <div id="search-bar">
+          <form class="" action="">
+            <input type="text" placeholder="Search" size="2">
+            <i class="fa-solid fa-keyboard p-2" style="font-size: 1em;"></i>
+          </form>
+          <div id="search-bar-icon-container" tooltip="Search">
+            <i class="fa-brands fa-sistrix fa-lg" aria-label="Search"></i>
+          </div>
+        </div>
+        <div style="margin-left: 12px; height: 100%;">
+          <div class="circle-grey-hover d-flex justify-content-center align-items-center" style="height: 40px; background-color: #f2f2f2;" tooltip="Search with your voice">
+              <i class="fa-solid fa-microphone fa-lg" aria-label="Search with your voice"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="nav-right-container" style="height:100%;">
+      <div class="d-md-none d-flex align-items-center justify-content-center circle-lightgrey-hover" style="height:40px;" tooltip="Search">
+        <i class="fa-solid fa-magnifying-glass fa-lg" aria-label="Search" onclick="showSearchbar()"></i>
+      </div>
+      <div class="d-xsm-flex d-md-none align-items-center justify-content-center circle-lightgrey-hover" style="display: none; height: 40px;" tooltip="Search with your voice">
+        <i class="fa-solid fa-microphone fa-lg" aria-label="Search with your voice"></i>
+      </div>
+      <div class="d-flex align-items-center justify-content-center circle-lightgrey-hover" style="height:40px;" tooltip="Create">
+        <i class="fa-solid fa-upload fa-lg"></i>
+      </div>
+      <div class="d-xsm-flex align-items-center justify-content-center justify-content-center circle-lightgrey-hover" style="display: none; height: 40px;" tooltip="Notifications">
+        <i class="fa-solid fa-bell fa-lg" aria-label="Notifications"></i>
+      </div>
+      <div class="user-avatar-container d-flex align-items-center">
+        <i class="fa-solid fa-circle-user fa-2xl" style="color: #f28526;"></i>
+      </div>
+    </div>
+
+  </nav>
+
+  <div class="d-flex">
+
+    <!--side-menu-->
+    <div id="side-menu-container-wrapper" class="default-layout">
+      <div id="side-menu-container">
+        <div id="side-menu">
+          <div class="d-flex flex-column align-items-center side-menu-tile">
+            <div>
+              <i class="fa-solid fa-house"></i>
+            </div>
+            <div class="side-menu-icon-caption">
+              <span>Home</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column align-items-center side-menu-tile">
+            <div>
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="side-menu-icon-caption">
+              <span>Shorts</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column align-items-center side-menu-tile">
+            <div>
+              <i class="fa-solid fa-tv" style="transform: rotate(180deg);"></i>
+            </div>
+            <div class="side-menu-icon-caption">
+              <span>Subscriptions</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column align-items-center side-menu-tile">
+            <div>
+              <i class="fa-regular fa-square-caret-right fa-lg"></i>
+            </div>
+            <div class="side-menu-icon-caption">
+              <span>You</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column align-items-center side-menu-tile">
+            <div>
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <div class="side-menu-icon-caption">
+              <span>History</span>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+
+    <!--wide side menu-->
+    <div id="overlay" onclick="toggleSidemenu()"></div>
+
+    <div id="wide-menu-container-wrapper" class="default-layout">
+      <div id="wide-menu-container" class="transition">
+
+        <div id="nav-wide-menu-container" class="default-layout">
+          <div class="menu-button-container hover-lightgrey" onclick="toggleSidemenu()">
+            <i class="fa-solid fa-bars fa-lg" aria-label="Menu"></i>
+          </div>
+          <div class="nav-logo-container">
+            <img class="nav-logo" src="images/CloneTube-logo.svg" alt="CloneTube">
+          </div>
+        </div>
+  
+        <div id="wide-menu-items-container" class="custom-scrollbar">
+  
+          <div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-solid fa-house"></i>
+              </div>
+              <div class="wide-menu-item-label">Home</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div class="wide-menu-item-label">Shorts</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-solid fa-tv" style="transform: rotate(180deg);"></i>
+              </div>
+              <div class="wide-menu-item-label">Subscriptions</div>
+            </div>
+  
+            <hr>
+  
+            <div class="wide-menu-label wide-menu-label-arrow">You</div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-solid fa-house"></i>
+              </div>
+              <div class="wide-menu-item-label">Your channel</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <div class="wide-menu-item-label">History</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-solid fa-list-ul"></i>
+              </div>
+              <div class="wide-menu-item-label">Playlists</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-regular fa-square-caret-right fa-lg"></i>
+              </div>
+              <div class="wide-menu-item-label">Your videos</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div class="wide-menu-item-label">Watch later</div>
+            </div>
+  
+            <div class="wide-menu-item">
+              <div class="wide-menu-item-icon-container">
+                <i class="fa-regular fa-thumbs-up"></i>
+              </div>
+              <div class="wide-menu-item-label">Liked videos</div>
+            </div>
+    
+          </div>
+  
+          <hr>
+  
+          <div>
+            <div class="wide-menu-label">Subscriptions</div>
+            <div>
+  
+                <div class="visable-subs-container">
+  
+                  <div class="wide-menu-item">
+                    <div class="wide-menu-item-icon-container">
+                      <i class="fa-solid fa-circle-user fa-lg"></i>
+                    </div>
+                    <div class="wide-menu-item-label">Dave</div>
+                  </div>
+  
+                  <div class="wide-menu-item">
+                    <div class="wide-menu-item-icon-container">
+                      <i class="fa-solid fa-circle-user fa-lg"></i>
+                    </div>
+                    <div class="wide-menu-item-label">Jake</div>
+                  </div>
+  
+                  <div class="wide-menu-item">
+                    <div class="wide-menu-item-icon-container">
+                      <i class="fa-solid fa-circle-user fa-lg"></i>
+                    </div>
+                    <div class="wide-menu-item-label">Adam</div>
+                  </div>
+  
+                  <div class="wide-menu-item">
+                    <div class="wide-menu-item-icon-container">
+                      <i class="fa-solid fa-circle-user fa-lg"></i>
+                    </div>
+                    <div class="wide-menu-item-label">Jacob</div>
+                  </div>
+  
+                  <div class="wide-menu-item hide">
+                    <div class="wide-menu-item-icon-container">
+                      <i class="fa-solid fa-circle-user fa-lg"></i>
+                    </div>
+                    <div class="wide-menu-item-label">Damon</div>
+                  </div>
+  
+                  <div class="wide-menu-item hide">
+                    <div class="wide-menu-item-icon-container">
+                      <i class="fa-solid fa-circle-user fa-lg"></i>
+                    </div>
+                    <div class="wide-menu-item-label">James</div>
+                  </div>
+  
+                </div>
+                <div class="toggable-subs-container"></div>
+              </div>
+              
+              <div class="wide-menu-item" onclick="toggleSubs()">
+                <div class="wide-menu-item-icon-container">
+                  <i id="subs-toggle-icon" class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div id="subs-toggle-label" class="wide-menu-item-label">Show more</div>
+              </div>
+  
+          </div>
+  
+          <hr>
+  
+          <div>
+            <div class="wide-menu-label">Explore</div>
+            <div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-fire" style="transform: rotate(25deg);"></i>
+                </div>
+                <div class="wide-menu-item-label">Trending</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-music"></i>
+                </div>
+                <div class="wide-menu-item-label">Music</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-clapperboard"></i>
+                </div>
+                <div class="wide-menu-item-label">Movies</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-tower-broadcast"></i>
+                </div>
+                <div class="wide-menu-item-label">Live</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <div class="wide-menu-item-label">Gaming</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-regular fa-newspaper"></i>
+                </div>
+                <div class="wide-menu-item-label">News</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="wide-menu-item-label">Sports</div>
+              </div>
+  
+              <div class="wide-menu-item">
+                <div class="wide-menu-item-icon-container">
+                  <i class="fa-solid fa-podcast"></i>
+                </div>
+                <div class="wide-menu-item-label">Podcasts</div>
+              </div>
+  
+            </div>
+          </div>
+  
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="d-block" style="width:100%;">
+
+      <div id="filter-container-wrapper">
+        <div id="filter-container">
+          <div class="filter">All</div>
+          <div class="filter">Shorts</div>
+          <div class="filter">Videos</div>
+          <div class="filter">Live</div>
+          <div class="filter">Music</div>
+          <div class="filter">News</div>
+        </div>
+      </div>
+      <div style="height: 56px;"></div>
+  
+      <div id="videos-container">
+
+        <div class="row g-0" style="width:100%; container-type: inline-size; margin: 0;">
+
+          <!--VIDEO no.1-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-fabianwiktor-994605.jpg" alt="">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!--VIDEO no.2-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-photo-707344.jpeg" alt="" class="img-fluid">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--VIDEO no.3-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-athena-2582937.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--VIDEO no.4-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-gantas-9070573.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--VIDEO no.5-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-lkloeppel-466685.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--VIDEO no.6-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-pixabay-66898.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--VIDEO no.7-->
+          <div class="video-responsive-container">
+            <div class="video-container">
+              <div class="video-thumbnail-container">
+                <img src="images/pexels-tomfisk-1522160.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="video-bottom-section">
+                <div class="video-creator-avatar-container">
+                  <img src="images/circle-user-regular.svg" alt="">
+                </div>
+                <div class="video-info-container">
+                  <div class="video-title-container">Video Title</div>
+                  <div class="video-creator-name-container">
+                    <span class="video-creator-name verified">Creator</span>
+                  </div>
+                  <div class="video-views-container">
+                    <span class="video-number-of-views">234 views</span>
+                    <span class="video-upload-date">2 years ago</span>
+                  </div>
+                </div>
+                <div class="action-menu-container">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="height: 100vh; width: 100%; display: flex; align-items:center; justify-content: center; font-size: 7rem; font-weight: bold; color: #d0d0d0; margin-bottom: 30px; border: 2px dashed lightgrey;">
+              <div style="padding: 20px; text-align: center;">
+                MISSING VIDEOS
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
