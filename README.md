@@ -13,7 +13,7 @@ Short Presentation:<br><br>
 Features:
 <ul>
   <li>Responsive navigation bar</li>
-  <li>Collapsable side menu for wide screens</li>
+  <li>Collapsible side menu for wide screens</li>
   <li>Slide menu for narrow screens</li>
   <li>Responsive video container</li>
   <li>And more...</li>
