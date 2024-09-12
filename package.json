@@ -1,7 +1,6 @@
 {
-  "name": "YouTubeClone",
+  "name": "youtubeclone",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^5.3.3"
-  }
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcinBala/CloneTube.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarcinBala/CloneTube/issues"
+  },
+  "homepage": "https://github.com/MarcinBala/CloneTube#readme",
+  "description": ""
 }
